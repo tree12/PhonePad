@@ -12,7 +12,7 @@ Example
 ## Tool
 * .Net Core 6.0
 * Visual studio 2022
-## Usage
+## How it work
 **NumberMapChar** this class use to store the relationship between the key and letters such as '2' represent of 'A','B','C' letters.
 ```cs
     public class NumberMapChar
