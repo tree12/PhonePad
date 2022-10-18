@@ -81,4 +81,36 @@ The starting point of program begin with **Program.cs**. The program call static
 ```cs
   char[] arr = inputString.ToCharArray(0, inputString.Length);
 ```
+The process of program is inside **OldPhonePad** method of MainKeyPad class like a flow chart below.
+<img src="./FlowchartDiagram.jpg" width="750" />
 
+From the process *"assign Value to output result from the previous char"* this process is inner method inside **OldPhonePad** method. The code as below.
+```cs
+   void assignValue()
+   {
+       numberMap = charList.FirstOrDefault(x => x.key == previousCh);
+       if (numberMap != null)
+       {
+           /***If user press more than maximium of possible value, find the value by iterative retrieve ***/
+           int indexCh = countChar % numberMap.chars.Length;
+           resultCh.Add(numberMap.chars[indexCh == 0 ? numberMap.chars.Length - 1 : indexCh - 1]);
+       }
+   }
+```
+## Unit Test
+This project contain unit test(xUnit) project name as **"TestPhonePad"**. From the unit test we have one method name as *"Test_oldPhonePad_should_be_same"*.
+At the beginning of the code we prepare 4 test cases with *Dictionary* variable. This variable contain input and expected output. If the method of *"OldPhonePad"* process correctly the result should equal expected result.
+```cs
+  [Fact]
+  public void Test_oldPhonePad_should_be_same()
+  {
+      Dictionary<string, string> testData =new Dictionary<string, string>();
+      testData.Add("33#", "E");
+      testData.Add("227*#", "B");
+      testData.Add("4433555 555666#", "HELLO");
+      testData.Add("8 88777444666*664#", "TURING");
+      foreach (var aTestData in testData) {
+          Assert.Equal(MainKeyPad.OldPhonePad(aTestData.Key), aTestData.Value);
+      }
+  }
+```
