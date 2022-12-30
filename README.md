@@ -8,7 +8,7 @@ Example
 "227*#" => "B"
 "4433555 555666#" => "HELLO"  
 "8 88777444666*664#" => "TURING"  
-
+<img src="./keypad.png" width="250" />
 ## Tool
 * .Net Core 6.0
 * Visual studio 2022
